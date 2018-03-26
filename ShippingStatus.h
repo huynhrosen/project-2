@@ -10,8 +10,9 @@
 #define ShippingStatus_h
 
 #pragma once
-
+#include <iostream>
 #include <string>
+#include <ctime>
 using namespace std;
 
 class ShippingStatus {
@@ -24,7 +25,9 @@ public:
     time_t m_getTime();
     
 private: 
-
+	std::string status_;
+	string location_;
+	time_t timeUpdated_;
 };
 
 

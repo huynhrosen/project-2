@@ -8,22 +8,23 @@
 
 #include "ShippingStatus.h"
 
-ShippingStatus::ShippingStatus() {
-  //to be completed
+ShippingStatus::ShippingStatus() {	//default constructor
+	status_ = "";
+	location_ = "";
+	timeUpdated_ = 0:00;
 }
 
-ShippingStatus::ShippingStatus(const string& status, const string& location, const time_t& timeUpdated) {
-  //to be completed
-}
+ShippingStatus::ShippingStatus(const string& status, const string& location, const time_t& timeUpdated): status_(status), location_(location), timeUpdated_(timeUpdated)
+{}
 
 string ShippingStatus::m_getStatus(){
-  //to be completed
+	return status_;
 }
 
 string ShippingStatus::m_getLocation(){
-   //to be completed
+	return location_;
 }
 
 time_t ShippingStatus::m_getTime() {
-    //to be completed
+	return timeUpdated_;
 }

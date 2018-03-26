@@ -17,6 +17,7 @@
 #include <string>
 #include <sstream>
 #include <stdexcept>
+
 #include "ShippingStatus.h"
 
 using namespace std;
@@ -47,6 +48,12 @@ public:
 	    
     
 private:
+
+	string location_;
+	string status_;
+	time_t time_;
+	int numUpdate_;
+
 
 };
 
