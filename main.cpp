@@ -47,53 +47,53 @@ int main() {
     testAnswer("testStatus03.m_getTime() test", testStatus03.m_getTime(), time_t(1516366740));
  
     
-    // Test PackageTracking class
-    string tmp_strtrackingnumber;//
-    tmp_strtrackingnumber = "TBA688567081000";
-    PackageTracking testPackageTracking(tmp_strtrackingnumber);
-    testPackageTracking.m_addUpdate(testStatus01.m_getStatus(), testStatus01.m_getLocation(), testStatus01.m_getTime());
-    testPackageTracking.m_addUpdate(testStatus02.m_getStatus(), testStatus02.m_getLocation(), testStatus02.m_getTime());
-    testPackageTracking.m_addUpdate(testStatus03.m_getStatus(), testStatus03.m_getLocation(), testStatus03.m_getTime());
-    
-    testPackageTracking.m_setCurrent(testStatus01.m_getTime());
-    testAnswer("testPackageTracking.m_getLocation()", testPackageTracking.m_getLocation(), string("N/A"));
-    testAnswer("testPackageTracking.m_getStatus( )", testPackageTracking.m_getStatus( ), string("Package has left seller facility and is in transit to carrier"));
-    
-    testPackageTracking.m_setCurrent(testStatus02.m_getTime());
-    testAnswer("testPackageTracking.m_getLocation()", testPackageTracking.m_getLocation(), string("Hebron, KENTUCKY US"));
-    testAnswer("testPackageTracking.m_getStatus( )", testPackageTracking.m_getStatus( ), string("Shipment arrived at Amazon facility"));
-    
-    // Test back and forward
-    testPackageTracking.m_moveForward();
-    testAnswer("testPackageTracking.m_moveForward()", testPackageTracking.m_getLocation(), string("San Bernardino, CALIFORNIA US"));
-    testAnswer("testPackageTracking.m_getStatus( )", testPackageTracking.m_getStatus( ), string("Shipment arrived at Amazon facility"));
-    testAnswer("testPackageTracking.m_getTime( )", testPackageTracking.m_getTime( ), time_t(1516366740));
-    testPackageTracking.m_moveBackward();
-    testAnswer("testPackageTracking.m_moveBackward()", testPackageTracking.m_getLocation(), string("Hebron, KENTUCKY US"));
-    testAnswer("testPackageTracking.m_getStatus( )", testPackageTracking.m_getStatus( ), string("Shipment arrived at Amazon facility"));
-    testAnswer("testPackageTracking.m_getTime( )", testPackageTracking.m_getTime( ), time_t(1516111440));
-    
-    // Test PackageTracking reading from a file
-    PackageTracking testPackageTracking01(tmp_strtrackingnumber);
-    string tmp_filename = tmp_strtrackingnumber + ".txt";
-	if (!testPackageTracking01.m_readTrackingFile(tmp_filename)) {
-		cout << "Failed to read tracking file" << endl;
-		return (-1);
-	}
-    testAnswer("testPackageTracking01.m_getLocation()", testPackageTracking01.m_getLocation(), string("Chino, US"));
-    testAnswer("testPackageTracking01.m_getStatus( )", testPackageTracking01.m_getStatus( ), string("Package arrived at a carrier facility"));
-    testAnswer("testPackageTracking01.m_getTime( )", testPackageTracking01.m_getTime( ), time_t(1516410060));
+ //   // Test PackageTracking class
+ //   string tmp_strtrackingnumber;//
+ //   tmp_strtrackingnumber = "TBA688567081000";
+ //   PackageTracking testPackageTracking(tmp_strtrackingnumber);
+ //   testPackageTracking.m_addUpdate(testStatus01.m_getStatus(), testStatus01.m_getLocation(), testStatus01.m_getTime());
+ //   testPackageTracking.m_addUpdate(testStatus02.m_getStatus(), testStatus02.m_getLocation(), testStatus02.m_getTime());
+ //   testPackageTracking.m_addUpdate(testStatus03.m_getStatus(), testStatus03.m_getLocation(), testStatus03.m_getTime());
+ //   
+ //   testPackageTracking.m_setCurrent(testStatus01.m_getTime());
+ //   testAnswer("testPackageTracking.m_getLocation()", testPackageTracking.m_getLocation(), string("N/A"));
+ //   testAnswer("testPackageTracking.m_getStatus( )", testPackageTracking.m_getStatus( ), string("Package has left seller facility and is in transit to carrier"));
+ //   
+ //   testPackageTracking.m_setCurrent(testStatus02.m_getTime());
+ //   testAnswer("testPackageTracking.m_getLocation()", testPackageTracking.m_getLocation(), string("Hebron, KENTUCKY US"));
+ //   testAnswer("testPackageTracking.m_getStatus( )", testPackageTracking.m_getStatus( ), string("Shipment arrived at Amazon facility"));
+ //   
+ //   // Test back and forward
+ //   testPackageTracking.m_moveForward();
+ //   testAnswer("testPackageTracking.m_moveForward()", testPackageTracking.m_getLocation(), string("San Bernardino, CALIFORNIA US"));
+ //   testAnswer("testPackageTracking.m_getStatus( )", testPackageTracking.m_getStatus( ), string("Shipment arrived at Amazon facility"));
+ //   testAnswer("testPackageTracking.m_getTime( )", testPackageTracking.m_getTime( ), time_t(1516366740));
+ //   testPackageTracking.m_moveBackward();
+ //   testAnswer("testPackageTracking.m_moveBackward()", testPackageTracking.m_getLocation(), string("Hebron, KENTUCKY US"));
+ //   testAnswer("testPackageTracking.m_getStatus( )", testPackageTracking.m_getStatus( ), string("Shipment arrived at Amazon facility"));
+ //   testAnswer("testPackageTracking.m_getTime( )", testPackageTracking.m_getTime( ), time_t(1516111440));
+ //   
+ //   // Test PackageTracking reading from a file
+ //   PackageTracking testPackageTracking01(tmp_strtrackingnumber);
+ //   string tmp_filename = tmp_strtrackingnumber + ".txt";
+	//if (!testPackageTracking01.m_readTrackingFile(tmp_filename)) {
+	//	cout << "Failed to read tracking file" << endl;
+	//	return (-1);
+	//}
+ //   testAnswer("testPackageTracking01.m_getLocation()", testPackageTracking01.m_getLocation(), string("Chino, US"));
+ //   testAnswer("testPackageTracking01.m_getStatus( )", testPackageTracking01.m_getStatus( ), string("Package arrived at a carrier facility"));
+ //   testAnswer("testPackageTracking01.m_getTime( )", testPackageTracking01.m_getTime( ), time_t(1516410060));
 
-    
-    // Test history printing
-    cout << "\nPrinting all previous updates:\n";
-    testPackageTracking01.m_printPreviousUpdates();
-    cout << "\nPrinting all following updates:\n";
-    testPackageTracking01.m_printFollowingUpdates();
-    cout << "\nPrinting Full History:\n";
-    testPackageTracking01.m_printFullTracking();
-    
-	//system("pause");
+ //   
+ //   // Test history printing
+ //   cout << "\nPrinting all previous updates:\n";
+ //   testPackageTracking01.m_printPreviousUpdates();
+ //   cout << "\nPrinting all following updates:\n";
+ //   testPackageTracking01.m_printFollowingUpdates();
+ //   cout << "\nPrinting Full History:\n";
+ //   testPackageTracking01.m_printFullTracking();
+ //   
+	system("pause");
 	return 1;
 }
 

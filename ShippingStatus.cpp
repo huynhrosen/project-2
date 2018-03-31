@@ -11,11 +11,15 @@
 ShippingStatus::ShippingStatus() {	//default constructor
 	status_ = "";
 	location_ = "";
-	timeUpdated_ = 0:00;
+	timeUpdated_ = 0;
 }
 
-ShippingStatus::ShippingStatus(const string& status, const string& location, const time_t& timeUpdated): status_(status), location_(location), timeUpdated_(timeUpdated)
-{}
+ShippingStatus::ShippingStatus(const string& status, const string& location, const time_t& timeUpdated)//:status_(status), location_(location), timeUpdated_(timeUpdated)
+{
+status_ = status;
+location_ = location;
+timeUpdated_ = timeUpdated;
+}
 
 string ShippingStatus::m_getStatus(){
 	return status_;

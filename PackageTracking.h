@@ -28,10 +28,10 @@ public:
     
     void m_addUpdate( const string& status, const string& location, const time_t& timeUpdated); // add a new update
     
-    bool m_moveBackward();//move iterator one step back in time; return false if not possible (true otherwise)
-    bool m_moveForward();//move iterator one step forward in time; return false if not possible (true otherwise)
+    bool m_moveBackward(); //move iterator one step back in time; return false if not possible (true otherwise)
+    bool m_moveForward();  //move iterator one step forward in time; return false if not possible (true otherwise)
 
-    string m_getLocation( );//return the location of the current update
+    string m_getLocation( ); //return the location of the current update
     time_t m_getTime( );//return the time of the current update
     string m_getStatus( );//return the status of the current update
     int m_getNumofUpdate() const; // get the total numbers of shipping status updates
@@ -52,8 +52,8 @@ private:
 	string location_;
 	string status_;
 	time_t time_;
-	int numUpdate_;
-
+	int numPackage_;
+	 
 
 };
 
